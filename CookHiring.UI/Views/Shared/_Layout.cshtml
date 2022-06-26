@@ -1,38 +1,131 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            margin-top: 80px;
+            height: auto;
+            width: 100%;
+        }
+
+        nav {
+            height: 80px;
+            width: 100%;
+            background: #127dac;
+            font-family: Montserrat;
+        }
+
+        label.logo {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            padding: 0 100px;
+            line-height: 80px;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 100px;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 0 8px;
+            line-height: 80px;
+        }
+
+            nav li:last-child {
+                float: right;
+            }
+
+        nav .nav-item a {
+            color: white;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin: 0 8px;
+            border: 1px solid transparent;
+            padding 10px 10px;
+            border-radius: 3px;
+        }
+
+        .nav-item a:hover {
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "User")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Auth")</li>
-                    <li>@Html.ActionLink("Signup", "Signup", "Auth")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <header>
+        <nav class="navbar-fixed-top">
+            <label class="logo">Cook Hiring</label>
+            <ul>
+                @if (Session["userRole"] == null)
+                {
+                    Session["userRole"] = "na";
+                }
+                @if (Session["userRole"].ToString() == "jobseeker")
+                {
+                    <li class="nav-item navlinks">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="nav-item">
+                        <div class="" id="searchForm">
+                            <input id="search" type="search" class="form-control border-0 bg-light" placeholder="search" />
+                        </div>
+                    </li>
+                    <li><button type="submit" class="btn btn-default border-5">Search</button></li>
+                    <li class="nav-item navlinks">@Html.ActionLink("Applied Jobs", "Index", "Home")</li>
+                    <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Login")</li>
+
+                }
+                else if (Session["userRole"].ToString() == "jobprovider")
+                {
+                    <li class="nav-item navlinks">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="nav-item navlinks">@Html.ActionLink("Add Openings", "Index", "Home")</li>
+                    <li class="nav-item navlinks">@Html.ActionLink("Candidates Applied", "Index", "Home")</li>
+                    <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Login")</li>
+                }
+                else if (Session["userRole"].ToString() == "admin")
+                {
+                    <li class="nav-item navlinks">@Html.ActionLink("Home", "Index", "Admin")</li>
+                    <li class="nav-item navlinks">@Html.ActionLink("JobSeekers List", "AllJobSeekers", "Admin")</li>
+                    <li class="nav-item navlinks">@Html.ActionLink("Job Providers List", "AllJobProviders", "Admin")</li>
+                    <li class="nav-item navlinks">@Html.ActionLink("All Jobs List", "AllJobsList", "Admin")</li>
+                    <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Login")</li>
+                }
+                else
+                {
+                    <li class="nav-item navlinks">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="nav-item">
+                        <div class="" id="searchForm">
+                            <input id="search" type="search" class="form-control border-0 bg-light" placeholder="search" />
+                        </div>
+                    </li>
+                    <li><button type="submit" class="btn btn-default border-5">Search</button></li>
+                    <li class="nav-item">@Html.ActionLink("Login", "Login", "Login")</li>
+                }
+            </ul>
+        </nav>
+    </header>
     <div class="container body-content">
+
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
