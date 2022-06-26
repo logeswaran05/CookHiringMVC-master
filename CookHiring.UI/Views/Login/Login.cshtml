@@ -1,0 +1,174 @@
+@model CookHiringAspNet.Models.User
+
+
+
+@{
+
+    ViewBag.Title = "Login";
+
+}
+
+
+
+<style>
+
+</style>
+
+
+
+<style>
+
+    .container {
+
+        padding: 0;
+
+        background: white;
+
+        width: 500px;
+
+        height: 500px;
+
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+        text-transform: uppercase;
+
+        font-family: montserrat;
+
+    }
+
+
+
+        .container h3 {
+
+            text-align: center;
+
+            font-weight: bold;
+
+        }
+
+
+
+        .container .form-group {
+
+            padding: 30px 0;
+
+            margin-left: 40px;
+
+        }
+
+
+
+            .container .form-group input {
+
+                margin-left: 30px;
+
+            }
+
+
+
+        .container .loginBtn {
+
+            background: #127dac;
+
+            color: white;
+
+            width: 120px;
+
+            text-align: center;
+
+            margin-right: 30px;
+
+        }
+
+
+
+        .container .signupLink {
+
+            padding-top: 30px;
+
+            text-align: center;
+
+        }
+
+</style>
+
+
+
+@using (Html.BeginForm())
+
+{
+
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="container">
+
+        <h3>Login</h3>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-white " })
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-white" })
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Login" class="loginBtn btn" />
+
+            </div>
+
+            <br />
+
+            <div class="signupLink">
+
+                @Html.ActionLink("Didn't have an account? Singup here", "Signup", "Login", new { @class = "signupLink" })
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <p style="color:red">@TempData["login"]</p>
+
+}
+
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
