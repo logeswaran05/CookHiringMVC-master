@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CookHiringAspNet.Models.job>
+
+@{
+    ViewBag.Title = "AllJobsList";
+}
+
+<h2>AllJobsList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.jobDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jobLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.toDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wagePerDay)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.jobDescription)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.jobLocation)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fromDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.toDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.mobileNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.wagePerDay)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditJob", new { id = item.id }) |
+        @Html.ActionLink("Details", "DetailsJob", new { id = item.id }) |
+        @Html.ActionLink("Delete", "DeleteJob", new { id = item.id })
+    </td>
+</tr>
+    }
+
+</table>

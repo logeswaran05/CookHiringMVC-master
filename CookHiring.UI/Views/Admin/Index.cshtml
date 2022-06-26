@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .card {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-5 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Users Graph</h4>
+                <canvas id="pieChart1"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Job Graph</h4>
+                <canvas id="pieChart2"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var pieChart1 = document.getElementById("pieChart1");
+            var chart1 = new Chart(pieChart1, {
+                type: 'pie',
+                data: {
+                    labels: ['Total Job Seekers', 'Total Job Providers', 'Total Jobs'],
+                    datasets: [{
+                        backgroundColor: ["#3498db", "#95a5a6", "#9b59b6"],
+                        data: [@ViewBag.JobSeekerCount, @ViewBag.JobProviderCount, @ViewBag.JobCount]
+                    }]
+                }
+            })
+            var pieChart2 = document.getElementById("pieChart2");
+            var chart2 = new Chart(pieChart2, {
+                type: 'pie',
+                data: {
+                    labels: ['Total Job Seekers Selected', 'Total Job Seekers Waiting', 'Total Job Seekers Rejected'],
+                    datasets: [{
+                        backgroundColor: ["green", "#3498db", "#d9534f"],
+                        data: [@ViewBag.TotalSelected, @ViewBag.TotalWaiting, @ViewBag.TotaRejected]
+                    }]
+                }
+            })
+        })
+    </script>
+}
