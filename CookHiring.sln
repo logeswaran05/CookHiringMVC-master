@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookHiring.UI", "CookHiring.UI\CookHiring.UI.csproj", "{F7EE545A-5D54-439D-87E9-2B1AFDD76EC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookHiring.Data", "CookHiring.Data\CookHiring.Data.csproj", "{39523FBC-4346-43D8-9EF8-181917FF6248}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7EE545A-5D54-439D-87E9-2B1AFDD76EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7EE545A-5D54-439D-87E9-2B1AFDD76EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7EE545A-5D54-439D-87E9-2B1AFDD76EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7EE545A-5D54-439D-87E9-2B1AFDD76EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39523FBC-4346-43D8-9EF8-181917FF6248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39523FBC-4346-43D8-9EF8-181917FF6248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39523FBC-4346-43D8-9EF8-181917FF6248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39523FBC-4346-43D8-9EF8-181917FF6248}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B32D053-0A29-4276-87A1-5CC84B5DE495}
+	EndGlobalSection
+EndGlobal

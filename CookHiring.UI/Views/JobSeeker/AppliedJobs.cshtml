@@ -1,0 +1,95 @@
+﻿@model IEnumerable<CookHiring.UI.Models.JobsDTO>
+
+@{
+    ViewBag.Title = "AppliedJobs";
+    Layout = "~/Views/Shared/_JobSeekerDashboard.cshtml";
+}
+
+<h2>AppliedJobs</h2>
+
+
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WagePerDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobStatus)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.isGotJob)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.JobDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WagePerDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobStatus)
+        </td>
+       
+        @if (item.isGotJob == "true")
+        {
+            <td calss="active-success">
+                Accepted
+            </td>
+        }
+        else if (item.isGotJob == "false")
+        {
+            <td calss="active-danger">
+                Rejected
+            </td>
+        }
+        else
+        {
+            <td calss="active-primary">
+                Waiting
+            </td>
+
+        }
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.JobId }) |
+        @if (item.isGotJob == "false")
+        {@Html.ActionLink("Ok", "Remove", new { id = item.JobId })}
+
+    </td>
+    </tr>
+}
+
+</table>

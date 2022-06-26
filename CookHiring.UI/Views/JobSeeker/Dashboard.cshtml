@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CookHiring.Data.Job>
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_JobSeekerDashboard.cshtml";
+}
+
+<h2>Dashboard</h2>
+
+<p>
+    @Html.ActionLink("My Riview", "GetReview")
+</p>
+<table class="table">
+    <tr>
+       
+       
+        <th>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WagePerDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.JobDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WagePerDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobStatus)
+        </td>
+        <td>
+           @Html.ActionLink("Apply", "Apply", new { id=item.JobId })
+        </td>
+    </tr>
+}
+
+</table>
